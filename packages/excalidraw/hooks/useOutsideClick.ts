@@ -24,13 +24,13 @@ export function useOutsideClick<T extends HTMLElement>(
 ) {
   useEffect(() => {
     function onOutsideClick(event: Event) {
-      const _event = event as Event & { target: T };
+      const _event = event as Event & { target: HTMLElement };
 
       if (!ref.current) {
         return;
       }
 
-      const isInsideOverride = isInside?.(_event, ref.current);
+      const isInsideOverride = isInside?.(_event, ref.current!);
 
       if (isInsideOverride === true) {
         return;

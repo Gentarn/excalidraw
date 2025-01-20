@@ -26,6 +26,8 @@
     "node": "18.0.0 - 22.x.x"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "0.3.4",
+    "@cloudflare/wrangler": "1.21.0",
     "@excalidraw/random-username": "1.0.0",
     "@sentry/browser": "6.2.5",
     "@sentry/integrations": "6.2.5",
@@ -51,6 +53,9 @@
     "build:preview": "yarn build && vite preview --port 5000"
   },
   "devDependencies": {
-    "vite-plugin-sitemap": "0.7.1"
+    "@cloudflare/workers-types": "4.20250109.0",
+    "cross-env": "7.0.3",
+    "vite-plugin-sitemap": "0.7.1",
+    "wrangler": "3.103.2"
   }
 }

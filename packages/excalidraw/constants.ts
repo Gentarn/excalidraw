@@ -3,26 +3,16 @@ import type { AppProps, AppState } from "./types";
 import type { ExcalidrawElement, FontFamilyValues } from "./element/types";
 import { COLOR_PALETTE } from "./colors";
 
-export const isDarwin = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-export const isWindows = /^Win/.test(navigator.platform);
-export const isAndroid = /\b(android)\b/i.test(navigator.userAgent);
-export const isFirefox =
-  "netscape" in window &&
-  navigator.userAgent.indexOf("rv:") > 1 &&
-  navigator.userAgent.indexOf("Gecko") > 1;
-export const isChrome = navigator.userAgent.indexOf("Chrome") !== -1;
-export const isSafari =
-  !isChrome && navigator.userAgent.indexOf("Safari") !== -1;
-export const isIOS =
-  /iPad|iPhone/.test(navigator.platform) ||
-  // iPadOS 13+
-  (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-// keeping function so it can be mocked in test
-export const isBrave = () =>
-  (navigator as any).brave?.isBrave?.name === "isBrave";
+export const isDarwin = false;
+export const isWindows = false;
+export const isAndroid = false;
+export const isFirefox = false;
+export const isChrome = false;
+export const isSafari = false;
+export const isIOS = false;
+export const isBrave = () => false;
 
-export const supportsResizeObserver =
-  typeof window !== "undefined" && "ResizeObserver" in window;
+export const supportsResizeObserver = false;
 
 export const APP_NAME = "Excalidraw";
 
@@ -250,7 +240,9 @@ export const EXPORT_DATA_TYPES = {
 } as const;
 
 export const EXPORT_SOURCE =
-  window.EXCALIDRAW_EXPORT_SOURCE || window.location.origin;
+  typeof window !== "undefined"
+    ? window.EXCALIDRAW_EXPORT_SOURCE || window.location.origin
+    : "https://excalidraw.com";
 
 // time in milliseconds
 export const IMAGE_RENDER_TIMEOUT = 500;
